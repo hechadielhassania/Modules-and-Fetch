@@ -1,7 +1,41 @@
+.image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+.container{
+    border:solid blue;
+    padding:12px;
+    display: flex;
+    justify-content: space-between;
+    margin:1em;
+    border-radius:5px;
+}
+.dashboard{
+    border:solid black;
+    padding:1em;
+}
+.spacer{
+    display:flex;
+    justify-content: space-between;
+}
+.sprintContainer{
+    border:solid black;
+    padding:1em;
+}
 .image-container {
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
   }
+
   .image-container img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+#pDiv {
+    border: solid blue;
+    padding: 1em;
+}
