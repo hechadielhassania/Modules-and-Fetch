@@ -1,25 +1,23 @@
-// Fetch Request -> JSON placeholder
-// https://jsonplaceholder.typicode.com/
-
-export async function getComments() {
-  fetch("https://jsonplaceholder.typicode.com/comments")
-    .then((response) =>  {
-     return response.json()    
-})
-.then((data) => {
-  //this is where we put our logic
-  let pDiv = document.getElementById("pDiv");
-  for (let i = 0; i < 10; i++) {    
-    let pTag = document.createElement("p");
-    pTag.innerHTML = `${i +1}. ${data[i].body}`;
-    pDiv.appendChild(pTag);
-    // console.log(pTag);
+async function fetchImages() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+    if (!response.ok) {
+      throw new Error("Failed to fetch images");
+    }
+    const data = await response.json();
+    const imageContainer = document.getElementById("imageContainer");
+    data.forEach(photo => {
+      const imageDiv = document.createElement("div");
+      imageDiv.classList.add("col-md-4", "mb-3");
+      const image = document.createElement("img");
+      image.src = photo.url;
+      image.alt = photo.title;
+      imageDiv.appendChild(image);
+      imageContainer.appendChild(imageDiv);
+    });
+  } catch (error) {
+    console.error(error);
   }
-})
-.catch((error) => 
-console.log(error)
-);
 }
 
-// getComments();
-// `${[i] = 1}: ${data[i].body}`;
+fetchImages();
